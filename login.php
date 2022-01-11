@@ -13,10 +13,13 @@ include 'libs/load.php';
     <meta name="description" content="">
     <meta name="author" content="Selfmade Ninja Academy">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Photogram by LAHTP</title>
+    <title>Login to Photogram</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/app/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css"
+        integrity="sha512-glciccPoOqr5mfDGmlJ3bpbvomZmFK+5dRARpt62nZnlKwaYZSfFpFIgUoD8ujqBw4TmPa/F3TX28OctJzoLfg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -26,10 +29,31 @@ include 'libs/load.php';
             user-select: none;
         }
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .form-signin .checkbox {
+            font-weight: 400;
+        }
+
+        .form-signin .form-floating:focus-within {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
     </style>
 </head>
@@ -63,9 +87,7 @@ include 'libs/load.php';
     </header>
     <main>
 
-        <?load_template('_calltoaction');?>
-
-        <?load_template('_photogram');?>
+        <?load_template('_login');?>
 
     </main>
     <?load_template('_footer');?>
