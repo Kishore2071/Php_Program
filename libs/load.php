@@ -1,6 +1,7 @@
 <?php
 
 include_once 'includes/Mic.class.php';
+include_once 'includes/User.class.php';
 include_once 'includes/Database.class.php';
 
 function load_template($name)

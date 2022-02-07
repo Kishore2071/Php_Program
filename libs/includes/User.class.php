@@ -2,6 +2,7 @@
 
 class User
 {
+    private $conn;
     public static function signup($user, $pass, $email, $phone)
     {
         $conn = Database::getConnection();
@@ -18,4 +19,10 @@ class User
         // $conn->close();
         return $error;
     }
+
+    public function __construct($username){
+        $this->conn = Database::getConnection();
+        $this->conn->query();
+    }
+
 }
