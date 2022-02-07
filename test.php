@@ -25,6 +25,8 @@ include 'libs/load.php';
 $mic1 = new Mic("Roda"); //constructing the object
 $mic2 = new Mic("HyperX"); //constructing the object
 
+Mic::testFunction(); //no construction, no destruction.
+testFunction();
 
 $mic1->setLight("White");
 $mic2->setLight("Green");
@@ -36,5 +38,16 @@ print("\n".$mic1->getBrand());
 print("\n".$mic2->getBrand());
 
 print("Value of 10+12 is ".$mic1->add(10, 12));
+print("This is mono font inside pre tag \n");
+
+$conn = Database::getConnection();
+$conn = Database::getConnection();
+$conn = Database::getConnection();
+$conn = Database::getConnection();
+$conn = Database::getConnection();
+$conn = Database::getConnection();
+$conn = Database::getConnection();
+
 ?>
 </pre>
+This is regular font.
