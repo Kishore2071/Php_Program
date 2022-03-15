@@ -37,6 +37,8 @@ print("Model of 1st mic is ".$mic1->getModelProxy());
 print("\n".$mic1->getBrand());
 print("\n".$mic2->getBrand());
 
+print("\n".$mic->price);
+
 print("Value of 10+12 is ".$mic1->add(10, 12));
 print("This is mono font inside pre tag \n");
 

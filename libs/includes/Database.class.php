@@ -17,7 +17,7 @@ class Database
             if ($connection->connect_error) {
                 die("Connection failed: " . $connection->connect_error); //TODO: Replace this with exception handling
             } else {
-                printf("New connection establishing...");
+                //printf("New connection establishing...");
                 Database::$conn = $connection; //replacing null with actual connection
                 return Database::$conn;
             }
