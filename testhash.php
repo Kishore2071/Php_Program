@@ -17,3 +17,11 @@ $b64len = strlen($b64);
 
 echo("MD5: $md5 (Lenght: $md5len)\n");
 echo("Base64: $b64 \n(Length: $b64len)\n");
+
+
+$data = "sibidharan";
+
+foreach (hash_algos() as $v) {
+    $r = hash($v, $data, false);
+    printf("%-12s %3d %s\n", $v, strlen($r), $r);
+}
