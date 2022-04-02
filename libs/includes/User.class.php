@@ -46,21 +46,27 @@ class User
     {
         $this->conn = Database::getConnection();
         $this->conn->query();
+        $this->username = $username;
+
+        //TODO: Write the code to fetch user data from Database for the given username. If username is not present, throw Exception.
+        $this->id = null; //Update this from database.
     }
 
     public function authenticate()
     {
     }
 
-    public function setBio()
+    public function setBio($bio)
     {
+        //TODO: Write UPDATE command to change new bio
     }
 
     public function getBio()
     {
+        //TODO: Write SELECT command to get the bio.
     }
 
-    public function setAvatar()
+    public function setAvatar($link)
     {
     }
 
