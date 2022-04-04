@@ -36,20 +36,14 @@ $mic1->setModel("hyper quad cast");
 print("Model of 1st mic is ".$mic1->getModelProxy());
 print("\n".$mic1->getBrand());
 print("\n".$mic2->getBrand());
+echo $mic1->getVoltage("hello", array(1,2,3,4,5), new Mic("Bose"));
+echo $mic1->setUpVoltage("hi", new Mic("cast"), [1,2,3]);
 
 print("\n".$mic->price);
 
-print("Value of 10+12 is ".$mic1->add(10, 12));
-print("This is mono font inside pre tag \n");
+print("\nValue of 10+12 is ".$mic1->add(10, 12));
+print("\nThis is mono font inside pre tag \n");
 
-$conn = Database::getConnection();
-$conn = Database::getConnection();
-$conn = Database::getConnection();
-$conn = Database::getConnection();
-$conn = Database::getConnection();
-$conn = Database::getConnection();
-$conn = Database::getConnection();
 
 ?>
 </pre>
-This is regular font.

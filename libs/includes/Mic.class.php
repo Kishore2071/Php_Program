@@ -18,6 +18,14 @@ class Mic
     public $price;
     public static $test;
 
+    public function __call($name, $arguments)
+    {
+        print("\nCalling: $name\n");
+        print_r($arguments);
+        print("\n");
+        return "Hello-return";
+    }
+
     public static function testFunction()
     {
         printf("This is a static function, this can be run without object initialization. ");
