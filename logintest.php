@@ -10,13 +10,22 @@ if (isset($_GET['logout'])) {
     die("Session destroyed, <a href='logintest.php'>Login Again</a>");
 }
 
+/*
+1. Check if session_token in PHP session is available
+2. If yes, construct UserSession and see if its successful.
+3. Check if the session is valid one
+4. If valid, print "Session validated"
+5. Else, print "Invlaid Session" and ask user to login.
+*/
 if (Session::get('is_loggedin')) {
     $username = Session::get('session_username');
     $userobj = new User($username);
     print("Welcome Back ".$userobj->getFirstname());
-    print("<br>".$userobj->getBio());
+    //print("<br>".$userobj->getBio());
     $userobj->setBio("Making new things...");
-    print("<br>".$userobj->getBio());
+    $userobj->setModel("Human");
+//$userobj->thisIsNotAFunction();
+//print("<br>".$userobj->getBio());
 } else {
     printf("No session found, trying to login now. <br>");
     $result = User::login($user, $pass);
