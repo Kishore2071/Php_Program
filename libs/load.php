@@ -6,9 +6,10 @@ include_once 'includes/Database.class.php';
 include_once 'includes/UserSession.class.php';
 
 global $__site_config;
+// global $__base_path;
 //Note: Change this path if you run this code outside lab.
 $__site_config = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/../photogramconfig.json');
-
+// $__base_path = get_config('base_path');
 Session::start();
 
 function get_config($key, $default=null)
@@ -24,7 +25,7 @@ function get_config($key, $default=null)
 
 function load_template($name)
 {
-    include $_SERVER['DOCUMENT_ROOT'] . "/photogram/_templates/$name.php"; //not consistant.
+    include $_SERVER['DOCUMENT_ROOT'] . get_config('base_path'). "_templates/$name.php"; //not consistant.
 }
 
 function validate_credentials($username, $password)
