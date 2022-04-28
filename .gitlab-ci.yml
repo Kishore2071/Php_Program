@@ -23,9 +23,9 @@ deploy-job:      # This job runs in the deploy stage.
     - echo "Application successfully deployed."
     - whoami
     - sudo rm -rf /var/www/photogram
-    - cp -r /home/gitlab-runner/builds/zqWS2XpW/0/sibidharan/php-class-project /var/www/
-    - mv /var/www/php-class-project /var/www/photogram
-    - rm -rf /var/www/photogram/.git
+    - sudo cp -r /home/gitlab-runner/builds/zqWS2XpW/0/sibidharan/php-class-project /var/www/
+    - sudo mv /var/www/php-class-project /var/www/photogram
+    - sudo rm -rf /var/www/photogram/.git
   tags:
     - prod
   only:
