@@ -21,6 +21,7 @@ deploy-job:      # This job runs in the deploy stage.
   script:
     - echo "Deploying application..."
     - echo "Application successfully deployed."
+    - whoami
     - rm -rf /var/www/photogram
     - cp -r /home/gitlab-runner/builds/zqWS2XpW/0/sibidharan/php-class-project /var/www/
     - mv /var/www/php-class-project /var/www/photogram
