@@ -8,6 +8,11 @@ include_once 'includes/UserSession.class.php';
 global $__site_config;
 // global $__base_path;
 //Note: Change this path if you run this code outside lab.
+/*
+Note: Location of configuration
+in lab : /home/user/phtogramconfig.json
+in server: /var/www/photogramconfig.json
+*/
 $__site_config_path = dirname(is_link($_SERVER['DOCUMENT_ROOT']) ? readlink($_SERVER['DOCUMENT_ROOT']) : $_SERVER['DOCUMENT_ROOT']).'/photogramconfig.json';
 $__site_config = file_get_contents($__site_config_path);
 // $__base_path = get_config('base_path');
