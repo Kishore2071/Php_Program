@@ -23,6 +23,7 @@ if ($result) {
     <form method="post" action="login.php">
         <img class="mb-4" src="https://git.selfmade.ninja/uploads/-/system/appearance/logo/1/Logo_Dark.png" alt=""
             height="50">
+        <input name="fingerprint" type="hidden" id="fingerprint" value="">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
         <div class="form-floating">
