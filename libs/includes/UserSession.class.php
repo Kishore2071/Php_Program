@@ -128,8 +128,8 @@ class UserSession
     }
 
     public function getFingerprint(){
-        if (isset($this->data['active'])) {
-            return $this->data['active'] ? true : false;
+        if (isset($this->data['fingerprint'])) {
+            return $this->data['fingerprint'] ? true : false;
         }
     }
 
