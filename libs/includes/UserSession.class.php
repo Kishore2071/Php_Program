@@ -15,11 +15,13 @@ class UserSession
             $conn = Database::getConnection();
             $ip = $_SERVER['REMOTE_ADDR'];
             $agent = $_SERVER['HTTP_USER_AGENT'];
+            $fingerprint = $_POST['fingerprint'];
             $token = md5(rand(0, 9999999) . $ip . $agent . time());
-            $sql = "INSERT INTO `session` (`uid`, `token`, `login_time`, `ip`, `user_agent`, `active`)
-            VALUES ('$user->id', '$token', now(), '$ip', '$agent', '1')";
+            $sql = "INSERT INTO `session` (`uid`, `token`, `login_time`, `ip`, `user_agent`, `active`, `fingerprint`)
+            VALUES ('$user->id', '$token', now(), '$ip', '$agent', '1', '$fingerprint')";
             if ($conn->query($sql)) {
                 Session::set('session_token', $token);
+                Session::set('fingerprint', $fingerprint);
                 return $token;
             } else {
                 return false;
@@ -46,7 +48,9 @@ class UserSession
                 if ($session->isValid() and $session->isActive()) {
                     if ($_SERVER['REMOTE_ADDR'] == $session->getIP()) {
                         if ($_SERVER['HTTP_USER_AGENT'] == $session->getUserAgent()) {
-                            return true;
+                            if ($session->getFingerprint() == $_SESSION['fingerprint']){
+                                return true;
+                            } else throw new Exception("FingerPrint doesn't match");
                         } else throw new Exception("User agent does't match");
                     } else throw new Exception("IP does't match");
                 } else {
@@ -120,6 +124,12 @@ class UserSession
     {
         if (isset($this->data['active'])) {
             return $this->data['active'] ? true : false;
+        }
+    }
+
+    public function getFingerprint(){
+        if (isset($this->data['fingerprint'])) {
+            return $this->data['fingerprint'] ? true : false;
         }
     }
 
