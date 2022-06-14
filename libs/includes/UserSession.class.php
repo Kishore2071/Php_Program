@@ -21,7 +21,7 @@ class UserSession
             VALUES ('$user->id', '$token', now(), '$ip', '$agent', '1', '$fingerprint')";
             if ($conn->query($sql)) {
                 Session::set('session_token', $token);
-                Session::set('fingerprint');
+                Session::set('fingerprint', $fingerprint);
                 return $token;
             } else {
                 return false;
