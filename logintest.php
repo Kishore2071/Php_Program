@@ -1,7 +1,7 @@
 <?php
 include 'libs/load.php';
 
-$user = "fooboo1";
+$user = "sibi";
 $pass = isset($_GET['pass']) ? $_GET['pass'] : '';
 $result = null;
 
