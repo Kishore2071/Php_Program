@@ -1,31 +1,35 @@
 <?php
 
 $login = true;
+Session::set('mode', 'web');
+Session::set('test', 'websdkjfnsdkjfn');
 if (isset($_POST['email_address']) and isset($_POST['password'])) {
-  $email_address = $_POST['email_address'];
-  $password = $_POST['password'];
-  Session::start();
-  $result = UserSession::authenticate($email_address, $password);
-  $login = false;
+    $email_address = $_POST['email_address'];
+    $password = $_POST['password'];
+
+    $result = UserSession::authenticate($email_address, $password);
+    $login = false;
 }
 if (!$login) {
-  if ($result){
-   ?>
-   <script>window.location.href = "<?=get_config('base_path')?>"</script>
+    if ($result) {
+        ?>
+<script>
+    window.location.href = "<?=get_config('base_path')?>"
+</script>
 
-  <?
-  } else {
-?>
-    <main class="container">
+<?php
+    } else {
+        ?>
+<main class="container">
     <div class="bg-light p-5 rounded mt-3">
         <h1>Login Failed</h1>
         <p class="lead">This example is a quick exercise to do basic login with html forms.</p>
     </div>
 </main>
-  <?php
-  }
+<?php
+    }
 } else {
-  ?>
+    ?>
 
 
 <main class="form-signin">
@@ -55,4 +59,4 @@ if (!$login) {
 </main>
 
 <?php
-    }
+}

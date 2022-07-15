@@ -1,6 +1,5 @@
-<pre>
 <?php
-include 'libs/load.php';
+#include 'libs/load.php';
 
 // $cookie_name = "testscript";
 // $cookie_value = $_SERVER['REQUEST_URI'];
@@ -44,6 +43,8 @@ include 'libs/load.php';
 // print("\nValue of 10+12 is ".$mic1->add(10, 12));
 // print("\nThis is mono font inside pre tag \n");
 
-print("Hello World");
-?>
-</pre>
+
+session_id('fbcesuoj0ea7dvcqdii7t9am4k');
+session_start();
+
+print($_SESSION['web']);
