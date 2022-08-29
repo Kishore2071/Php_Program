@@ -3,6 +3,12 @@
 class Database
 {
     public static $conn = null;
+
+    /**
+     * Get a database connection variable from session, can be used multiple times.
+     *
+     * @return mysqli
+     */
     public static function getConnection()
     {
         if (Database::$conn == null) {

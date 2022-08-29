@@ -32,7 +32,7 @@ class UserSession
     }
 
     /*
-    * Authorize function have has 4 level of checks 
+    * Authorize function have has 4 level of checks
         1.Check that the IP and User agent field is filled.
         2.Check if the session is correct and active.
         3.Check that the current IP is the same as the previous IP
@@ -48,21 +48,35 @@ class UserSession
                 if ($session->isValid() and $session->isActive()) {
                     if ($_SERVER['REMOTE_ADDR'] == $session->getIP()) {
                         if ($_SERVER['HTTP_USER_AGENT'] == $session->getUserAgent()) {
-                            if ($session->getFingerprint() == $_SESSION['fingerprint']){
+                            if ($session->getFingerprint() == $_SESSION['fingerprint']) {
                                 return true;
-                            } else throw new Exception("FingerPrint doesn't match");
-                        } else throw new Exception("User agent does't match");
-                    } else throw new Exception("IP does't match");
+                            } else {
+                                throw new Exception("FingerPrint doesn't match");
+                            }
+                        } else {
+                            throw new Exception("User agent does't match");
+                        }
+                    } else {
+                        throw new Exception("IP does't match");
+                    }
                 } else {
                     $session->removeSession();
                     throw new Exception("Invalid session");
                 }
-            } else throw new Exception("IP and User_agent is null");
+            } else {
+                throw new Exception("IP and User_agent is null");
+            }
         } catch (Exception $e) {
             return false;
         }
     }
 
+
+    /**
+     * Cunstruct a user session with the given token
+     *
+     * @param SessionToken $token
+     */
     public function __construct($token)
     {
         $this->conn = Database::getConnection();
@@ -98,7 +112,9 @@ class UserSession
             } else {
                 return false;
             }
-        } else throw new Exception("login tiem is null");
+        } else {
+            throw new Exception("login tiem is null");
+        }
     }
 
     public function getIP()
@@ -113,8 +129,9 @@ class UserSession
 
     public function deactivate()
     {
-        if (!$this->conn)
+        if (!$this->conn) {
             $this->conn = Database::getConnection();
+        }
         $sql = "UPDATE `session` SET `active` = 0 WHERE `uid`=$this->uid";
 
         return $this->conn->query($sql) ? true : false;
@@ -127,7 +144,8 @@ class UserSession
         }
     }
 
-    public function getFingerprint(){
+    public function getFingerprint()
+    {
         if (isset($this->data['fingerprint'])) {
             return $this->data['fingerprint'] ? true : false;
         }
@@ -138,11 +156,15 @@ class UserSession
     {
         if (isset($this->data['id'])) {
             $id = $this->data['id'];
-            if (!$this->conn) $this->conn = Database::getConnection();
+            if (!$this->conn) {
+                $this->conn = Database::getConnection();
+            }
             $sql = "DELETE FROM `session` WHERE `id` = $id;";
             if ($this->conn->query($sql)) {
                 return true;
-            } else return false;
+            } else {
+                return false;
+            }
         }
     }
 }
