@@ -49,7 +49,8 @@ class UserSession
                     if ($_SERVER['REMOTE_ADDR'] == $session->getIP()) {
                         if ($_SERVER['HTTP_USER_AGENT'] == $session->getUserAgent()) {
                             if ($session->getFingerprint() == $_SESSION['fingerprint']) {
-                                return true;
+                                Session::$user = $session->getUser();
+                                return $session;
                             } else {
                                 throw new Exception("FingerPrint doesn't match");
                             }
@@ -67,7 +68,7 @@ class UserSession
                 throw new Exception("IP and User_agent is null");
             }
         } catch (Exception $e) {
-            return false;
+            throw new Exception("Something is wrong");
         }
     }
 

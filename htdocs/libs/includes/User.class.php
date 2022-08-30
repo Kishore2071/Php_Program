@@ -86,7 +86,7 @@ class User
         if (!$this->conn) {
             $this->conn = Database::getConnection();
         }
-        $sql = "SELECT `$var` FROM `users` WHERE `id` = $this->id";
+        $sql = "SELECT `$var` FROM `auth` WHERE `id` = $this->id";
         //print($sql);
         $result = $this->conn->query($sql);
         if ($result and $result->num_rows == 1) {
@@ -103,7 +103,7 @@ class User
         if (!$this->conn) {
             $this->conn = Database::getConnection();
         }
-        $sql = "UPDATE `users` SET `$var`='$data' WHERE `id`=$this->id;";
+        $sql = "UPDATE `auth` SET `$var`='$data' WHERE `id`=$this->id;";
         if ($this->conn->query($sql)) {
             return true;
         } else {
@@ -120,10 +120,10 @@ class User
         }
     }
 
-    public function getUsername()
-    {
-        return $this->username;
-    }
+    // public function getUsername()
+    // {
+    //     return $this->username;
+    // }
 
     public function authenticate()
     {

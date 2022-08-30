@@ -28,7 +28,7 @@ class Database
                 return Database::$conn;
             }
         } else {
-            printf("Returning existing establishing...");
+            // printf("Returning existing establishing...");
             return Database::$conn;
         }
     }

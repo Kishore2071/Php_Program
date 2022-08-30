@@ -1,8 +1,12 @@
 <?php
 
+use MongoDB\Driver\Session as DriverSession;
+
 class Session
 {
     public static $isError = false;
+    public static $user = null;
+    public static $usersession = null;
     public static function start()
     {
         session_start();
@@ -44,6 +48,16 @@ class Session
         }
     }
 
+    public static function getUser()
+    {
+        return Session::$user;
+    }
+
+    public static function getUserSession(){
+        return Session::$usersession;
+    }
+
+
     public static function loadTemplate($name)
     {
         $script = $_SERVER['DOCUMENT_ROOT'] . get_config('base_path'). "_templates/$name.php";
@@ -66,6 +80,17 @@ class Session
 
     public static function isAuthenticated()
     {
+        //TODO: Is it a correct implementation?
+        if(is_object(Session::getUserSession())){
+            return Session::getUserSession()->isValid();
+        } 
         return false;
+    }
+
+    public static function ensureLogin(){
+        if(!Session::isAuthenticated()){
+            header("Location: /login.php");
+            die();
+        }
     }
 }
