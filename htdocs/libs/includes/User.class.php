@@ -18,7 +18,7 @@ class User
             throw new Exception("User::__call() -> $name, function unavailable.");
         }
     }
-    
+
     public static function signup($user, $pass, $email, $phone)
     {
         $options = [
@@ -43,6 +43,7 @@ class User
     public static function login($user, $pass)
     {
         $query = "SELECT * FROM `auth` WHERE `username` = '$user'";
+        print($query);
         $conn = Database::getConnection();
         $result = $conn->query($query);
         if ($result->num_rows == 1) {

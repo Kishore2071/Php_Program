@@ -53,7 +53,8 @@ class Session
         return Session::$user;
     }
 
-    public static function getUserSession(){
+    public static function getUserSession()
+    {
         return Session::$usersession;
     }
 
@@ -80,15 +81,16 @@ class Session
 
     public static function isAuthenticated()
     {
-        //TODO: Is it a correct implementation?
-        if(is_object(Session::getUserSession())){
+        //TODO: Is it a correct implementation? Change with instanceof
+        if (is_object(Session::getUserSession())) {
             return Session::getUserSession()->isValid();
-        } 
+        }
         return false;
     }
 
-    public static function ensureLogin(){
-        if(!Session::isAuthenticated()){
+    public static function ensureLogin()
+    {
+        if (!Session::isAuthenticated()) {
             header("Location: /login.php");
             die();
         }
